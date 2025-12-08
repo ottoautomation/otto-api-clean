@@ -1,0 +1,9 @@
+{
+  "name": "otto-dashboard-api",
+  "version": "1.0.0",
+  "main": "api/index.js",
+  "dependencies": {
+    "airtable": "^0.12.2",
+    "cors": "^2.8.5"
+  }
+}
