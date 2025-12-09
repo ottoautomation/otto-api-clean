@@ -5,18 +5,16 @@ const base = new Airtable({
   apiKey: process.env.AIRTABLE_API_KEY
 }).base('appJs6HW5kNwrC8ig');
 
-// CORS headers
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Content-Type': 'application/json'
-};
-
 module.exports = async (req, res) => {
+  // Set CORS headers on every request
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Content-Type', 'application/json');
+
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
-    return res.status(200).json({});
+    return res.status(200).end();
   }
 
   const { action, email, password, clientId } = req.query;
